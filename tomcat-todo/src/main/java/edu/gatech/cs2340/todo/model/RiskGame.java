@@ -9,7 +9,8 @@ public class RiskGame {
 
     private int gameID;
     
-    public static final int ADD_PLAYERS = 0, CONFIRMATION = 1, SELECT_LOCATION = 2;
+    public static final int ADD_PLAYERS = 0, CONFIRMATION = 1, SELECT_LOCATION = 2, SELECT_TERRITORY = 3;
+	 public static final int FIVE = 5, FOUR = 4, THREE = 3;
     private int state; // 0-add players, 1-select territory, 
     
     ArrayList<Player> players;
@@ -35,28 +36,34 @@ public class RiskGame {
         return players;
     }
     
-	 public void addArmies() {
-	 		for(int i = 0; i < players.size(); i++){
+	 public int addArmies(int i) {
 				if (players.get(i).getCountry().contains("HAL Space Station")){
-					players.get(i).addArmy(5);
+					players.get(i).addArmy(FIVE);
+					return FIVE;
 				}
 				if (players.get(i).getCountry().contains("Alpha-Centauri")){
-					players.get(i).addArmy(4);
+					players.get(i).addArmy(FOUR);
+					return FOUR;
 				}
 				if (players.get(i).getCountry().contains("Polaris")){
-					players.get(i).addArmy(5);
+					players.get(i).addArmy(FIVE);
+					return FIVE;
 				}
 				if (players.get(i).getCountry().contains("Midichloria")){
-					players.get(i).addArmy(3);
+					players.get(i).addArmy(THREE);
+					return THREE;
 				}
 				if (players.get(i).getCountry().contains("Borg")){
-					players.get(i).addArmy(3);
+					players.get(i).addArmy(THREE);
+					return THREE;
 				}
 				if (players.get(i).getCountry().contains("Char")){
-					players.get(i).addArmy(4);
+					players.get(i).addArmy(FOUR);
+					return FOUR;
 				}
-			}
+				return 0;
 		}
+					
     /**
       * add players state functions
       *
@@ -126,7 +133,7 @@ public class RiskGame {
     public String finishConfirmation() {
         String result = null;
         if (state == CONFIRMATION) {
-            state = 2;// next state goes here.
+            state = 3;// next state goes here.
         } else {
             result = "State ERROR: Not CONFIRMATION.";
         }

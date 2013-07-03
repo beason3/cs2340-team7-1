@@ -12,6 +12,7 @@ public class Player implements Comparable<Player>
     ArrayList<Territory> occupiedTerritories; //A list of all territories occupied by this player
 //	ArrayList<Resource> ownedResources; //A List of all resources owned by the player
     ArrayList<Unit> army;
+	 
 
     public Player(String title, String task) { //constructors may be temporary, may later intialize with x army, y turn, etc. 
         name = title;
